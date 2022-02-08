@@ -20,6 +20,16 @@ public class LoginPageTests extends webDriverInit {
     }
 
     @Test
+    @Description("Login with correct Username and Password")
+    public void CorrectLoginPattern() {
+        LoginPage loginPage = new LoginPage(driver);
+        HomePage homePage = new HomePage(driver);
+        loginPage
+                .login(UserData.userNameLogin, UserData.userPassword);
+        Assert.assertTrue(homePage.getVisibleCartButton().isDisplayed());
+    }
+
+    @Test
     @Description("Login with empty Username field and see notification about requirement of Username data")
     public void LoginWithEmptyUsername() {
         LoginPage loginPage = new LoginPage(driver);
